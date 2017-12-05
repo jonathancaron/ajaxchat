@@ -10,16 +10,17 @@ try {
 }
 
 if(!empty($_POST['nom']) && !empty($_POST['message'])){
-  echo "ok1";
+
   $nom = $_POST['nom'];
   $message = $_POST['message'];
   try{
     $query = $dbh->prepare("INSERT INTO tablee(nom,message) VALUES ('$nom','$message')");
     $query->execute();
+    echo "succes";
   } catch (PDOException $e) {
       echo 'Connexion échouée : ' . $e->getMessage();
   }
-  echo "ok2";
+
 }
 else{
   echo "error : empty name or message";
